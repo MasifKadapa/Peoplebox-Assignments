@@ -1,0 +1,271 @@
+create database Ecommerce;
+use Ecommerce;
+
+create table Customers(CustomerID INT AUTO_INCREMENT PRIMARY KEY, Name varchar(30) NOT NULL, EmailID varchar(100) UNIQUE NOT NULL, MobileNo varchar(10), Password varchar(20));
+
+INSERT INTO Customers (Name, EmailID, MobileNo, Password)
+VALUES 
+('John Doe', 'john.doe@example.com', '1234567890', 'password123'),
+('Jane Smith', 'jane.smith@example.com', '9876543210', 'password456'),
+('Mike Johnson', 'mike.johnson@example.com', '4567891230', 'password789'),
+('Emily Davis', 'emily.davis@example.com', '6789012345', 'password101'),
+('Chris Brown', 'chris.brown@example.com', '2345678901', 'password202'),
+('Sarah Lee', 'sarah.lee@example.com', '3456789012', 'password303'),
+('David Wilson', 'david.wilson@example.com', '5678901234', 'password404'),
+('Laura Taylor', 'laura.taylor@example.com', '8901234567', 'password505');
+
+CREATE TABLE Categories (CategoryID INT AUTO_INCREMENT PRIMARY KEY, CategoryName VARCHAR(100) NOT NULL);
+
+
+INSERT INTO Categories (CategoryName) 
+VALUES 
+('Electronics'),
+('Home Appliances'),
+('Clothing'),
+('Books'),
+('Furniture');
+
+Create table Products (ProductID INT AUTO_INCREMENT PRIMARY KEY, ProductName Varchar(200) not null, Description varchar(2000) not null, ProductRating FLOAT, Price INT NOT NULL, Stock INT NOT NULL, CategoryID INT, FOREIGN KEY (CategoryID) references Categories(CategoryID));
+
+-- Insert products for Electronics
+INSERT INTO Products (ProductName, Description, ProductRating, Price, Stock, CategoryID)
+VALUES 
+('Smartphone', 'Latest model with advanced features', 4.5, 500, 100, 1),
+('Laptop', 'High-performance laptop for work and gaming', 4.7, 1000, 50, 1),
+('Smartwatch', 'Fitness and health tracking smartwatch', 4.2, 150, 200, 1),
+('Headphones', 'Noise-canceling over-ear headphones', 4.4, 200, 150, 1),
+('Smart TV', '4K Ultra HD Smart TV with built-in apps', 4.6, 800, 80, 1),
+('Tablet', 'Portable tablet with great battery life', 4.3, 300, 120, 1),
+('Gaming Console', 'Next-gen gaming console with amazing graphics', 4.8, 400, 60, 1),
+('Bluetooth Speaker', 'Wireless speaker with superior sound', 4.1, 100, 220, 1),
+('Camera', 'Digital camera with high-resolution sensor', 4.5, 600, 90, 1),
+('Smart Home Hub', 'Connect and control your home devices', 4.2, 120, 180, 1);
+
+-- Insert products for Home Appliances
+INSERT INTO Products (ProductName, Description, ProductRating, Price, Stock, CategoryID)
+VALUES 
+('Washing Machine', 'Front-load washing machine with multiple modes', 4.6, 400, 50, 2),
+('Refrigerator', 'Double-door refrigerator with large capacity', 4.5, 600, 70, 2),
+('Microwave Oven', 'Convection microwave oven for quick cooking', 4.2, 120, 150, 2),
+('Air Conditioner', 'Energy-efficient split AC', 4.4, 500, 40, 2),
+('Vacuum Cleaner', 'Powerful vacuum cleaner for deep cleaning', 4.3, 200, 80, 2),
+('Blender', 'High-speed blender for smoothies and soups', 4.0, 80, 200, 2),
+('Dishwasher', 'Automatic dishwasher with eco-friendly features', 4.7, 350, 60, 2),
+('Coffee Maker', 'Coffee maker with programmable settings', 4.5, 90, 150, 2),
+('Electric Kettle', 'Quick-boiling electric kettle', 4.1, 40, 250, 2),
+('Dehumidifier', 'Portable dehumidifier for home use', 4.3, 120, 110, 2);
+
+INSERT INTO Products (ProductName, Description, ProductRating, Price, Stock, CategoryID)
+VALUES 
+('T-shirt', 'Comfortable cotton T-shirt in various colors', 4.3, 20, 150, 3),
+('Jeans', 'Denim jeans with a slim fit', 4.5, 40, 100, 3),
+('Jacket', 'Stylish leather jacket for winter', 4.6, 80, 60, 3),
+('Sneakers', 'Trendy sneakers for casual wear', 4.4, 50, 120, 3),
+('Dress', 'Elegant summer dress for formal occasions', 4.2, 30, 80, 3),
+('Hoodie', 'Soft hoodie with a front pocket', 4.1, 25, 180, 3),
+('Sweater', 'Warm woolen sweater for winter', 4.7, 60, 90, 3),
+('Scarf', 'Wool scarf to keep you cozy in the winter', 4.0, 15, 200, 3),
+('Shorts', 'Comfortable shorts for hot weather', 4.3, 22, 150, 3),
+('Hat', 'Trendy hat to complete your look', 4.2, 18, 250, 3);
+
+INSERT INTO Products (ProductName, Description, ProductRating, Price, Stock, CategoryID)
+VALUES 
+('Novel: The Great Gatsby', 'A classic novel by F. Scott Fitzgerald', 4.8, 15, 200, 4),
+('Biography: Steve Jobs', 'The biography of Apple’s co-founder Steve Jobs', 4.6, 20, 150, 4),
+('Science Fiction: Dune', 'Epic science fiction novel by Frank Herbert', 4.5, 18, 100, 4),
+('Cookbook: The Joy of Cooking', 'Comprehensive cookbook with a variety of recipes', 4.4, 25, 120, 4),
+('Mystery: The Girl with the Dragon Tattoo', 'A gripping mystery novel by Stieg Larsson', 4.7, 22, 180, 4),
+('Fantasy: Harry Potter and the Sorcerer\'s Stone', 'First book in the Harry Potter series', 4.9, 35, 250, 4),
+('Historical Fiction: The Book Thief', 'A historical novel by Markus Zusak', 4.8, 18, 90, 4),
+('Self-Help: The Power of Habit', 'Book about changing habits and transforming your life', 4.3, 12, 150, 4),
+('Travel: Into the Wild', 'Non-fiction book about Christopher McCandless\'s journey', 4.5, 20, 130, 4),
+('Poetry: Leaves of Grass', 'Collection of poems by Walt Whitman', 4.6, 14, 180, 4);
+
+INSERT INTO Products (ProductName, Description, ProductRating, Price, Stock, CategoryID)
+VALUES 
+('Sofa', 'Comfortable 3-seat sofa with modern design', 4.5, 500, 40, 5),
+('Dining Table', 'Wooden dining table with seating for 6', 4.6, 300, 60, 5),
+('Office Chair', 'Ergonomic office chair with adjustable height', 4.2, 120, 80, 5),
+('Bookshelf', 'Tall bookshelf for storing books and decor', 4.3, 150, 70, 5),
+('Coffee Table', 'Stylish wooden coffee table', 4.4, 80, 100, 5),
+('Bed Frame', 'Queen-sized metal bed frame with headboard', 4.7, 250, 50, 5),
+('Wardrobe', 'Spacious wardrobe with sliding doors', 4.5, 350, 40, 5),
+('Nightstand', 'Wooden nightstand with drawers', 4.0, 60, 120, 5),
+('Recliner Chair', 'Recliner chair for relaxation', 4.6, 200, 80, 5),
+('Dining Chairs', 'Set of 4 comfortable dining chairs', 4.3, 100, 150, 5);
+
+CREATE TABLE Orders (
+    OrderID INT AUTO_INCREMENT PRIMARY KEY,      
+    CustomerID INT,
+    ShippingAddress VARCHAR(255),       
+    TotalAmount DECIMAL(10, 2) NOT NULL CHECK (TotalAmount >= 0),
+    PaymentMethod VARCHAR(50),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) );
+
+INSERT INTO Orders (CustomerID, ShippingAddress, TotalAmount, PaymentMethod)
+VALUES 
+(1, '123 Main St, Springfield, IL', 850.00, 'Credit Card'),
+(2, '456 Oak Rd, Chicago, IL', 400.00, 'PayPal'),
+(3, '789 Pine Ave, New York, NY', 600.00, 'Credit Card'),
+(4, '101 Maple Blvd, Los Angeles, CA', 200.00, 'Credit Card'),
+(5, '202 Birch Ln, Houston, TX', 500.00, 'PayPal'),
+(6, '303 Cedar St, Phoenix, AZ', 750.00, 'Credit Card'),
+(7, '404 Elm St, Dallas, TX', 300.00, 'PayPal'),
+(8, '505 Ash St, Austin, TX', 350.00, 'Credit Card'),
+(1, '123 Main St, Springfield, IL', 1200.00, 'Credit Card'),
+(2, '456 Oak Rd, Chicago, IL', 850.00, 'PayPal'),
+(3, '789 Pine Ave, New York, NY', 1400.00, 'Credit Card'),
+(4, '101 Maple Blvd, Los Angeles, CA', 650.00, 'PayPal');
+
+CREATE TABLE Order_Items (
+    OrderItemID INT AUTO_INCREMENT PRIMARY KEY,  
+    OrderID INT,                                 
+    ProductID INT,                               
+    Quantity INT NOT NULL CHECK (Quantity > 0), 
+    Price DECIMAL(10, 2) NOT NULL CHECK (Price > 0),  
+    Total DECIMAL(10, 2) AS (Quantity * Price),  
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),    
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID) 
+);
+
+INSERT INTO Order_Items (OrderID, ProductID, Quantity, Price)
+VALUES
+(1, 1, 1, 500.00),  
+(1, 2, 1, 1200.00), 
+(2, 3, 2, 50.00),  
+(2, 5, 1, 150.00), 
+(3, 4, 2, 100.00),  
+(3, 6, 1, 700.00),  
+(4, 7, 1, 350.00), 
+(4, 8, 1, 150.00),  
+(5, 9, 2, 120.00),  
+(5, 10, 1, 300.00), 
+(6, 11, 3, 150.00),
+(6, 12, 1, 100.00), 
+(7, 13, 2, 80.00),  
+(7, 14, 1, 120.00), 
+(8, 15, 1, 200.00),
+(8, 16, 1, 100.00), 
+(9, 1, 1, 500.00),  
+(9, 2, 2, 200.00),  
+(10, 3, 2, 100.00), 
+(10, 4, 3, 120.00), 
+(11, 5, 1, 700.00), 
+(11, 6, 2, 250.00), 
+(12, 7, 2, 160.00), 
+(12, 8, 1, 140.00); 
+
+--To find the top 3 customers based on the total order value
+SELECT 
+    c.CustomerID,
+    c.Name,
+    SUM(o.TotalAmount) AS TotalOrderValue
+FROM 
+    Customers c
+JOIN 
+    Orders o ON c.CustomerID = o.CustomerID
+GROUP BY 
+    c.CustomerID
+ORDER BY 
+    TotalOrderValue DESC
+LIMIT 3;
+
+
+-- List products with low stock (below 10)
+SELECT 
+    p.ProductID,
+    p.ProductName,
+    p.Stock
+FROM 
+    Products p
+WHERE 
+    p.Stock < 10;
+
+
+
+--Calculate revenue by category 
+SELECT 
+    c.CategoryName,
+    SUM(oi.Quantity * oi.Price) AS Revenue
+FROM 
+    Order_Items oi
+JOIN 
+    Products p ON oi.ProductID = p.ProductID
+JOIN 
+    Categories c ON p.CategoryID = c.CategoryID
+GROUP BY 
+    c.CategoryName;
+
+
+--Show orders with their items and total amount 
+SELECT 
+    o.OrderID,
+    oi.OrderItemID,
+    oi.Total AS ItemTotal
+FROM 
+    Orders o
+JOIN 
+    Order_Items oi ON o.OrderID = oi.OrderID;
+    
+
+-- Advanced Task-1
+CREATE VIEW order_summary AS
+SELECT 
+    o.OrderID,
+    c.Name AS CustomerFullName,
+    COUNT(DISTINCT oi.ProductID) AS UniqueProductCount,
+    SUM(oi.Quantity) AS TotalQuantity,
+    SUM(oi.Quantity * oi.Price) AS TotalOrderAmount,
+    o.OrderID AS OrderDate  -- Assuming the OrderID represents the order date for simplicity
+FROM 
+    Orders o
+JOIN 
+    Customers c ON o.CustomerID = c.CustomerID
+JOIN 
+    Order_Items oi ON o.OrderID = oi.OrderID
+JOIN 
+    Products p ON oi.ProductID = p.ProductID
+GROUP BY 
+    o.OrderID, c.Name;
+
+
+-- Write a stored procedure to update stock levels
+
+DELIMITER $$
+
+CREATE PROCEDURE UpdateStock(
+    IN p_ProductID INT,       
+    IN p_Quantity INT         
+)
+BEGIN
+    UPDATE Products
+    SET Stock = Stock + p_Quantity
+    WHERE ProductID = p_ProductID;
+END $$
+
+DELIMITER ;
+
+-- Trigger 1 On Insertion of an Order Item
+DELIMITER $$
+
+CREATE TRIGGER after_order_item_insert
+AFTER INSERT ON Order_Items
+FOR EACH ROW
+BEGIN
+    CALL UpdateStock(NEW.ProductID, -NEW.Quantity);
+END $$
+
+DELIMITER ;
+
+
+-- Trigger 2 On Deletion of an Order Item
+DELIMITER $$
+
+CREATE TRIGGER after_order_item_delete
+AFTER DELETE ON Order_Items
+FOR EACH ROW
+BEGIN
+    CALL UpdateStock(OLD.ProductID, OLD.Quantity);
+END $$
+
+DELIMITER ;
