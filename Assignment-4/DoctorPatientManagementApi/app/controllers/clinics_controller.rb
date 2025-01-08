@@ -1,0 +1,49 @@
+# app/controllers/clinics_controller.rb
+class ClinicsController < ApplicationController
+  include Authentication # Include authentication module
+
+  before_action :authenticate_user # Add authentication check before every action
+  before_action :set_clinic, only: [:show, :update, :destroy]
+
+  def index
+    @clinics = Clinic.all
+    render json: @clinics
+  end
+
+  def show
+    render json: @clinic
+  end
+
+  def create
+    @clinic = Clinic.new(clinic_params)
+    if @clinic.save
+      render json: @clinic, status: :created
+    else
+      render json: @clinic.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @clinic.update(clinic_params)
+      render json: @clinic
+    else
+      render json: @clinic.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @clinic.destroy
+    head :no_content
+  end
+
+  private
+
+  def set_clinic
+    @clinic = Clinic.find(params[:id])
+  end
+
+  def clinic_params
+    params.require(:clinic).permit(:name, :location, :contact_info)
+  end
+end
+

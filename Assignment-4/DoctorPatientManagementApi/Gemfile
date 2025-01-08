@@ -1,0 +1,52 @@
+source 'https://rubygems.org'
+
+# Rails version
+gem "rails", "~> 7.1.5", ">= 7.1.5.1"
+
+
+# Database adapter
+gem 'pg'  # PostgreSQL
+
+# API-only application (avoiding unnecessary middleware)
+gem 'rack-cors'
+
+# Gems for testing and development
+group :development, :test do
+  gem 'rspec-rails'         # RSpec for testing
+  gem 'factory_bot_rails'   # FactoryBot for test data
+  gem 'faker'               # Faker for generating dummy data
+  gem 'shoulda-matchers'    # Shoulda Matchers for model validation tests
+end
+
+# JSON serialization
+gem 'jbuilder', '~> 2.7'
+
+# Authentication (optional, if required)
+gem 'bcrypt', '~> 3.1.7'   # For secure password storage
+
+# Background jobs (optional)
+gem 'sidekiq'              # Background job processing
+
+# File uploads (optional)
+gem 'carrierwave'
+
+# Pagination (optional)
+gem 'kaminari'
+
+# Run Rails with Puma web server
+gem 'puma', '~> 4.3'
+
+# Manage environment variables (optional)
+gem 'dotenv-rails', groups: [:development, :test]
+
+# API Documentation (optional)
+gem 'rswag'
+
+gem "bootsnap", require: false
+
+
+# Linting and formatting (optional)
+group :development do
+  gem 'rubocop', require: false
+end
+
